@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}School Portal{% endblock %} · Northstar</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="{{ url_for('dashboard') }}"><span class="brand-mark">N</span><span>Northstar<small>School portal demo</small></span></a>
+    <p class="nav-label">WORKSPACE</p>
+    <nav>
+      <a class="nav-link {% if request.endpoint == 'dashboard' %}active{% endif %}" href="{{ url_for('dashboard') }}"><span>▦</span> Overview</a>
+      <a class="nav-link {% if request.endpoint == 'students' %}active{% endif %}" href="{{ url_for('students') }}"><span>♙</span> Students</a>
+      <a class="nav-link {% if request.endpoint == 'attendance' %}active{% endif %}" href="{{ url_for('attendance') }}"><span>✓</span> Attendance</a>
+      <a class="nav-link {% if request.endpoint == 'courses' %}active{% endif %}" href="{{ url_for('courses') }}"><span>▤</span> Courses</a>
+      <a class="nav-link {% if request.endpoint == 'assignments' %}active{% endif %}" href="{{ url_for('assignments') }}"><span>▣</span> Assignments</a>
+    </nav>
+    <div class="sidebar-note"><span class="status-dot"></span> Preview mode <p>Sample data only</p></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="crumb">School workspace <span>/</span> {% block breadcrumb %}Overview{% endblock %}</div><div class="user-chip"><span class="avatar">AD</span><span>Demo Admin<small>Preview account</small></span></div></header>
+    <section class="content">{% block content %}{% endblock %}</section>
+    <footer>Preview only · Do not use real student information</footer>
+  </main>
+</body>
+</html>

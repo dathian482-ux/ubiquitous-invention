@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block title %}Students{% endblock %}{% block breadcrumb %}Students{% endblock %}
+{% block content %}
+<div class="page-heading"><div><p class="eyebrow">PEOPLE</p><h1>Students</h1><p class="muted">Browse the student records in your school.</p></div></div>
+<section class="panel"><div class="panel-heading"><div><h2>Student directory</h2><p class="muted">{{ students|length }} sample records</p></div></div><div class="table-wrap"><table><thead><tr><th>STUDENT</th><th>ADMISSION NO.</th><th>GRADE</th><th>STATUS</th></tr></thead><tbody>{% for student in students %}<tr><td><div class="person"><span class="avatar pastel">{{ student.first_name[0] }}{{ student.last_name[0] }}</span><span>{{ student.first_name }} {{ student.last_name }}</span></div></td><td>{{ student.admission_no }}</td><td>{{ student.grade }}</td><td><span class="pill">{{ student.status }}</span></td></tr>{% endfor %}</tbody></table></div></section>
+{% endblock %}
